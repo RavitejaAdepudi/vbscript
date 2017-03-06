@@ -1,0 +1,5 @@
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\bin\Debug\Dynatrace.dll
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\bin\Debug\Dynatrace.pdb
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\obj\Debug\Dynatrace.csprojResolveAssemblyReference.cache
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\obj\Debug\Dynatrace.dll
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\obj\Debug\Dynatrace.pdb

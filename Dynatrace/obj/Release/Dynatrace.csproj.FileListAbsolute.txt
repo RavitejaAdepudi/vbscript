@@ -1,0 +1,5 @@
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\bin\Release\Dynatrace.dll
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\bin\Release\Dynatrace.pdb
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\bin\Release\Dynatrace.tlb
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\obj\Release\Dynatrace.dll
+c:\users\michael.lundstrom\documents\visual studio 2015\Projects\Dynatrace\Dynatrace\obj\Release\Dynatrace.pdb
