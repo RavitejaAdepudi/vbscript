@@ -21,6 +21,8 @@ namespace Dynatrace
         String get_tag_as_string();
         void set_tag_from_string(String tag);
         void link_client_purepath_by_string(bool synchronous, String tag);
+        void start_server_purepath();
+        void end_server_purepath();
     }
 
     [ComVisible(true)] // Properties and methods of this class will be visible to COM
@@ -80,32 +82,50 @@ namespace Dynatrace
 
         public void capture_string(int serial_no, String argument)
         {
-            dynatrace_capture_string(serial_no, Encoding.UTF8.GetBytes(argument));
+            dynatrace_capture_string(serial_no, ASCIIEncoding.ASCII.GetBytes(argument + "\0"));
         }
         [DllImport("dtadk.dll", EntryPoint = "dynatrace_capture_string")]
-        private unsafe static extern void dynatrace_capture_string(int serial_no, byte[] argument);
+        private static extern void dynatrace_capture_string(int serial_no, byte[] argument);
 
         public String get_tag_as_string()
         {
             byte[] tag = new byte[256];
             dynatrace_get_tag_as_string(tag, tag.Length);
-            return System.Text.Encoding.UTF8.GetString(tag);
+            int inx = Array.FindIndex(tag, 0, (x) => x == 0); //search for 0
+            if (inx >= 0)
+                return (System.Text.Encoding.ASCII.GetString(tag, 0, inx));
+            else
+                return (System.Text.Encoding.ASCII.GetString(tag));
         }
         [DllImport("dtadk.dll", EntryPoint = "dynatrace_get_tag_as_string")]
-        private unsafe static extern int dynatrace_get_tag_as_string(byte[] buf, int size);
+        private static extern int dynatrace_get_tag_as_string(byte[] buf, int size);
 
         public void set_tag_from_string(String tag)
         {
-            dynatrace_set_tag_from_string(Encoding.UTF8.GetBytes(tag));
+            dynatrace_set_tag_from_string(ASCIIEncoding.ASCII.GetBytes(tag + "\0"));
         }
         [DllImport("dtadk.dll", EntryPoint = "dynatrace_set_tag_from_string")]
-        private unsafe static extern int dynatrace_set_tag_from_string(byte[] tag);
+        private static extern int dynatrace_set_tag_from_string(byte[] tag);
 
         public void link_client_purepath_by_string(bool synchronous, String tag)
         {
-            dynatrace_link_client_purepath_by_string(synchronous, Encoding.UTF8.GetBytes(tag));
+            dynatrace_link_client_purepath_by_string(synchronous, ASCIIEncoding.ASCII.GetBytes(tag + "\0"));
         }
         [DllImport("dtadk.dll", EntryPoint = "dynatrace_link_client_purepath_by_string")]
-        private unsafe static extern void dynatrace_link_client_purepath_by_string(bool synchronous, byte[] tag);
+        private static extern void dynatrace_link_client_purepath_by_string(bool synchronous, byte[] tag);
+
+        public void start_server_purepath()
+        {
+            dynatrace_start_server_purepath();
+        }
+        [DllImport("dtadk.dll", EntryPoint = "dynatrace_start_server_purepath")]
+        private static extern void dynatrace_start_server_purepath();
+
+        public void end_server_purepath()
+        {
+            dynatrace_end_server_purepath();
+        }
+        [DllImport("dtadk.dll", EntryPoint = "dynatrace_end_server_purepath")]
+        private static extern void dynatrace_end_server_purepath();
     }
 }
