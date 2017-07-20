@@ -7,3 +7,5 @@ The built dll can be found in Dynatrace/bin/Release/
 dynatrace.vbs is the helper script
 
 example.vbs is an example script which is using the helper script
+
+tag example.vbs and tag example - sync.vbs are used to show how to do sync and async stitching between purepaths
